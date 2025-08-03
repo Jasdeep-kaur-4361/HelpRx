@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel-users</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <script src="script/angular.min.js"></script>
+
+    <script>
+        var module = angular.module("myModule", []);
+        module.controller("myController", function ($scope, $http) {
+            $scope.jsonBArray=[]
+            $scope.doShowUsers=function()
+            {
+                var url="/get-angular-panel-users-records";
+                $http.get(url).then(doneKuch,failKuch);
+                function doneKuch(response)
+                {
+                    alert(JSON.stringify(response.data)); 
+                    $scope.jsonBArray=response.data;
+                }
+                function failKuch(response)
+                {
+                    alert(JSON.stringify(response.data));
+                } 
+            }
+
+
+            // -------------Buttons-------------------
+                
+                // ------delete--------------
+            $scope.doDelete=function(emailid)
+            {
+                    // alert("mnhbgfvd");
+
+                    if (confirm("Sure to delete ?")==false)
+                    return;
+    
+                        var url="/angular-panel-users-delete?emailKuch="+emailid;
+                        $http.get(url).then(doneKuch,failKuch);
+                        function doneKuch(response)
+                        {
+                            alert(JSON.stringify(response.data));
+                            // $scope.doShowUsers(); 
+                        }
+                        function failKuch(response)
+                        {
+                            alert(JSON.stringify(response.data));
+                        }
+                            
+            }
+
+            $scope.doBlock=function(emailid)
+            {
+                // alert(emailid);
+                // alert("mnhbgfvd");
+
+                    if (confirm("Want to Block  ?")==false)
+                    return;
+    
+                        var url="/angular-panel-users-block?emailKuch="+emailid;
+                        $http.get(url).then(doneKuch,failKuch);
+                        function doneKuch(response)
+                        {
+                            alert(JSON.stringify(response.data));
+                            // $scope.doShowUsers(); 
+                        }
+                        function failKuch(response)
+                        {
+                            alert(JSON.stringify(response.data));
+                        }
+
+            }
+
+            $scope.doResume=function(emailid)
+            {
+                if (confirm("Wanna Unblock ?")==false)
+                    return;
+    
+                        var url="/angular-panel-users-resume?emailKuch="+emailid;
+                        $http.get(url).then(doneKuch,failKuch);
+                        function doneKuch(response)
+                        {
+                            alert(JSON.stringify(response.data));
+                            // $scope.doShowUsers(); 
+                        }
+                        function failKuch(response)
+                        {
+                            alert(JSON.stringify(response.data));
+                        }
+            }
+
+        })
+    </script>
+</head>
+<body ng-app="myModule" ng-controller="myController">
+<!-- ---------------------------NAVBAR---------------------- -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary" >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+  </nav>    <center>
+    <input type="button" id="btnShow" class="mt-4" value="Show all Users" ng-click="doShowUsers();">
+    
+    <table class="table table-striped" width="1000"  border="1px">
+            <br><br>
+            <tr align="center">
+                <th>Sr No.</th> <th>Email</th> <th>date of sign</th> <th>type</th> <th>status</th>  <th>Opreations</th>
+            </tr>
+            <tr align="center" ng-repeat="myobj in jsonBArray">
+                <td>{{$index+1}}</td>
+                <td>{{myobj.email}}</td>
+                <td>{{myobj.dos}}</td>
+                <td>{{myobj.selectop}}</td>
+                
+                <td>{{myobj.status}}</td>  
+                
+                <!-- <td>{{myobj.address}}</td> -->
+                <td align="center">
+                    <input type="button" class="mt-4" value="Delete" ng-click="doDelete(myobj.email);">
+                    <!-- same obj.---as in tableabove -->
+                    <input type="button" class="mt-4" value="Block" ng-click="doBlock(myobj.email);">
+                    <input type="button" class="mt-4" value="Resume" ng-click="doResume(myobj.email);">
+
+                </td>
+        </tr>
+        </table>
+    </center>
+</body>
+</html>

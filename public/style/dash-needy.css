@@ -1,0 +1,48 @@
+.navbar{
+    background-color: #e6f5ff;
+}
+
+.helprx{
+    color:#006600;
+    margin: 0px 0px 0px 20px;
+    font-size: 25px;
+    font-family: Cooper;
+}
+#signupbtn{
+    background-color: #004d99;
+    border: #004d99;
+
+}
+#updatebtn{
+    background-color: #004d99;
+    border: #004d99;
+}
+
+#loginbtn{
+    background-color: #004d99;
+    border: #004d99;
+}
+.selfhelp{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+#details{
+    background-color: #004d99;
+    border: #004d99; 
+}
+#find-med{
+    background-color: #004d99;
+    border: #004d99;
+}
+#Settingsbtn{
+    background-color: #004d99;
+    border: #004d99;
+}
+#logoutbtn{
+    background-color: #004d99;
+    border: #004d99;
+}
+#spanwelcome{
+    color: #004d99;
+}

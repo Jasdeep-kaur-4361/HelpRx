@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medicine Donation Success</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <script>
+        window.onload = () => {
+            confetti({
+                particleCount: 150,
+                spread: 100,
+                origin: { y: 0.7 }
+            });
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #f0fff4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 50px;
+            color: #2e7d32;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #388e3c;
+        }
+
+        .emoji {
+            font-size: 3rem;
+            margin-top: 20px;
+        }
+
+        .quote {
+            margin-top: 40px;
+            font-style: italic;
+            color: #4caf50;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🌿 Thank You for Donating Medicines! 🌿</h1>
+    <p>Your generosity can save lives and bring hope to someone in need.</p>
+
+    <div class="emoji">💊💚🙏</div>
+
+    <div class="quote">
+        “Helping one person might not change the whole world, but it could change the world for one person.”
+    </div>
+
+    <p id="countdown"></p>
+<script>
+  let timeLeft = 5;
+  const countdown = document.getElementById('countdown');
+
+  const timer = setInterval(() => {
+    countdown.innerText = `Redirecting in ${timeLeft} seconds...`;
+    timeLeft--;
+    if (timeLeft < 0) {
+      clearInterval(timer);
+      window.location.href = "/"; // or your route
+    }
+  }, 1000);
+</script>
+
+</body>
+
+</html>

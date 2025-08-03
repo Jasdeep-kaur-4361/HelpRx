@@ -1,0 +1,266 @@
+body {
+    background-color: #e8f5e9;
+}
+
+#navbar {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0fff4;
+    padding: 1rem 2rem;
+    flex-wrap: nowrap;
+
+}
+.belownav{
+
+    background-color: #4CAF50;
+
+
+}
+.helprx {
+
+    /* background-color: #000033; */
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #4CAF50;
+    /* margin: 0px 20px 50px 5px; */
+    /* padding: 0px 20px 50px 5px; */
+    text-align: left;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+
+}
+
+.helprx span {
+    color: #81C784;
+
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding-left: 10rem;
+    flex-wrap: nowrap;
+    /* background-color: #000080; */
+    width: inherit;
+
+}
+
+.anchorsNav {
+    display: inline-block;
+    padding: 0.5rem 0.5rem;
+    font-size: 1rem;
+    white-space: nowrap;
+    font-family: 'Poppins', sans-serif;
+    height: inherit;
+    font-size: 1rem;
+    color: #144734;
+    margin: 6px 22px;
+    border-radius: 6px;
+    text-decoration-line: none;
+    text-align: center;
+    /* background-color: #3d5c5c; */
+
+
+}
+
+.anchorsNav:hover {
+
+    color: #549e69;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+
+}
+
+.selfhelp {
+    width: 50px;
+    height: 50px;
+    /* border-radius: 50%; */
+}
+
+.services {
+    height: 10px;
+}
+
+.our {
+    color: #000033;
+    font-size: 35px;
+    font-family: 'Rubik', sans-serif;
+    /* margin-top: 20px; */
+    background-color: #ccf2ff;
+    align-items: center;
+}
+
+.developer {
+    font-size: 50px;
+    font-family: Bodoni MT;
+}
+
+.devloped-by {
+    color: #000033;
+    font-size: 35px;
+    font-family: Britannic;
+    /* margin-top: 20px; */
+    background-color: #ccf2ff;
+    align-items: center;
+}
+
+.reach-us {
+    color: #000033;
+    font-size: 45px;
+    font-family: Britannic;
+    /* margin-top: 20px; */
+    /* background-color: #ccf2ff; */
+    align-items: center;
+}
+
+.navbar {
+    background-color: #f0fff4;
+
+}
+
+.card:hover {
+
+    box-shadow: 0 10px 16px 0 rgba(105, 186, 233, 0.644);
+}
+
+#doneSignup {
+    align-content: center;
+}
+
+#signupbtn {
+    background-color: #43a047;
+    border: #43a047;
+    color: #fff;
+    Padding: 8px 18px;
+    Font-Weight: 600;
+    border-radius: 10px;
+
+}
+
+#signupbtn:hover {
+    /* box-shadow: 0px 10px 8px 0px rgba(157, 160, 161, 0.644); */
+    background-color: #218c59;
+}
+
+/* #loginbtn:hover {
+    box-shadow: 0px 10px 8px 0px rgba(157, 160, 161, 0.644);
+} */
+
+/* #signbtn {
+    background-color: #43a047;
+    border: #43a047;
+    color: #fff;
+    Padding: 8px 18px;
+    Font-Weight: 600;
+    border-radius: 10px;
+
+
+} */
+
+/* #signbtn:hover {
+    background-color: #218c59;
+    box-shadow: 0px 10px 8px 0px rgba(157, 160, 161, 0.644);
+} */
+
+/* #logbtn:hover {
+    box-shadow: 0px 10px 8px 0px rgba(157, 160, 161, 0.644);
+
+} */
+
+/* #loginbtn {
+    background-color: #43a047;
+    border: #43a047;
+    color: #fff;
+} */
+
+/* #logbtn {
+    background-color: #43a047;
+    border: #43a047;
+    align-items: center;
+} */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    /* vertical center */
+    gap: 1.5 rem;
+    margin: 0;
+    /* padding: 5rem; */
+}
+
+.pics {
+    border-radius: 50% 50% 50% 50%;
+}
+
+
+.okhay {
+    color: red;
+}
+
+.sokhay {
+    color: rgb(27, 216, 3);
+}
+
+#txtlogEmail {
+    width: 91%;
+    /* color: green; */
+}
+
+#headlog {
+    font-size: 30px;
+    color: #000080;
+    font-family: Elephant;
+    /* text-shadow: 0px 10px 8px 0px red; */
+
+}
+
+#headsign {
+    font-size: 30px;
+    color: #000080;
+    font-family: Elephant;
+}
+
+#labelsignEmail {
+    font-size: 20px;
+    font-family: Georgia;
+}
+
+#labelsignPwd {
+    font-size: 20px;
+    font-family: Georgia;
+}
+
+#labelsignType {
+    font-size: 20px;
+    font-family: Georgia;
+}
+
+#labelEmail {
+    font-size: 20px;
+    font-family: Georgia;
+}
+
+#labelPwd {
+    font-size: 20px;
+    font-family: Georgia;
+}
+
+#abc1 {
+    box-shadow: 0px 5px 8px 7px #3d5c5c;
+}
+
+#abc2 {
+    box-shadow: 0px 5px 8px 7px #3d5c5c;
+}
+
+#para {
+    font-family: Rockwell;
+}
+
+#fontdev {
+    font-family: Rockwell;
+}
