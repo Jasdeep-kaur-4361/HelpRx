@@ -1,0 +1,60 @@
+
+.helprx{
+    color:#006600;
+    margin: 0px 0px 0px 20px;
+    font-size: 25px;
+    font-family: Cooper;
+}
+
+.selfhelp{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+
+.navbar{
+    background-color: #e6f5ff;
+}
+
+
+#signupbtn{
+    background-color: #004d99;
+    border: #004d99;
+
+}
+
+#signbtn{
+    background-color: #004d99;
+    border: #004d99;
+    
+}
+#btnsearch{
+    background-color: #004d99;
+    border: #004d99;
+}
+
+#searchbtn{
+    background-color: #004d99;
+    border: #004d99;
+}
+#loginbtn{
+    background-color: #004d99;
+    border: #004d99;
+}
+
+#updatebtn{
+    background-color: #004d99;
+    border: #004d99;
+}
+
+#logbtn{
+    background-color: #004d99;
+    border: #004d99;
+    /* align-items: center; */
+}
+.pics{
+    border-radius: 50% 50% 50% 50%;
+}
+
+

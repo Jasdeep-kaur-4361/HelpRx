@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular starting</title>
+    <script src="script/angular.min.js"></script>
+    <script>
+        var module=angular.module("myModule",[]);
+        module.controller("myController",function($scope,$http){
+            $scope.fn="Gabbar Singh";
+            $scope.jk="";
+            $scope.full;
+            $scope.dosome=function()
+            {
+                alert("hello "+$scope.fn);
+            }
+            $scope.doConcat=function()
+            {
+                $scope.full=$scope.fn+" "+$scope.jk;
+            }
+            // --------Fake Data------------
+            // $scope.jsonBArrayDup=
+            // [
+            //         {email:"bcebti@gmail.com",pwd:'bangalore',picname:'2-golden-temple.jpg'},//only vo photos jo uploads me hai 
+            //     {email:"jasdeep@gmail.com",pwd:'abara',picname:'3-golden-temple----.jpg'},
+            //     {email:"shrutiGoyal@gmail.com",pwd:'chemistry',picname:'java-training-resizeddsdwdd.png'}
+                    
+            //  ]
+            $scope.jsonBArray=[];
+            
+            // -----------fecth records button --------------
+            $scope.fetchRecords=function()
+            {
+                
+                var url="/get-angular-k-records";
+                $http.get(url).then(doneKuch,failKuch);
+                function doneKuch(response)
+                {
+                    alert(JSON.stringify(response.data)); 
+                    $scope.jsonBArray=response.data;
+                }
+                function failKuch(response)
+                {
+                    alert(JSON.stringify(response.data));
+                }
+            }
+            
+            
+
+            // -------------Buttons-------------------
+                
+                // ------delete--------------
+            $scope.doDelete=function(emailid)
+            {
+                
+                if (confirm("R U Sure ?")==false)
+                    return;
+    
+                    var url="/angular-delete?emailKuch="+emailid;
+                    $http.get(url).then(doneKuch,failKuch);
+                    function doneKuch(response)
+                    {
+                        alert(JSON.stringify(response.data));
+                        $scope.dofetchRecords(); 
+                    }
+                    function failKuch(response)
+                    {
+                        alert(JSON.stringify(response.data));
+                    }
+                
+            }
+
+            $scope.doBlock=function(emailid)
+            {
+                alert(emailid);
+            }
+
+            $scope.doResume=function(emailid)
+            {
+                alert(emailid);
+            }
+        })
+    </script>
+</head>
+<body ng-app="myModule" ng-controller="myController" ng-init="fetchmed();fetchCities();">
+    <center>
+        <!-- <input type="text" ng-model="fn">
+        <input type="text" ng-model="jk">
+        
+        <input type="button" value="say hello" ng-click="dosome();">
+        <input type="button" value="Join" ng-click="doConcat();">
+
+        <p>
+            {{fn}}
+        </p>
+        <p>
+            Full Name={{full}} -->
+            <!-- to show on screen^ -->
+        
+        <hr>
+        <input type="button" value="fetchRecords" ng-click="fetchRecords();"><br><br>
+
+
+        <table width="1000" border="1px">
+            <tr>
+                <th>Sr No.</th>  <th>Email</th>  <th>Password</th>  <th>Picname</th> <th>Prev</th> <th>Operations</th>
+            </tr>
+            <tr ng-repeat="myobj in jsonBArray">
+                <td>{{$index+1}}</td>
+                <td>{{myobj.emailid}}</td>
+                <td>{{myobj.name}}</td>  
+                <td>{{myobj.picname}}</td>
+                <td align="center">
+                    <img width="70" height="70" src="uploads/{{myobj.picname}}" alt="">
+                </td> 
+                <td align="center">
+                    <input type="button" value="Delete"ng-click="doDelete(myobj.emailid);">                 
+                    <input type="button" value="Block"ng-click="doBlock(myobj.emailid);">
+                    <input type="button" value="Resume"ng-click="doResume(myobj.emailid);">
+
+                </td>                   
+            </tr>
+            
+        </table>
+    </center>
+    <div class="col-md-6">
+        <!-- for copied data /selecting their email ids in select box -->
+        <label for="txtCity" class="form-label">Select City</label>
+        <select ng-options="myobj.emailid  for myobj in jsonBArray"  ng-model="selObj" ng-change="doShowSelEmail();">
+            <option value="">select </option>
+        </select>
+    </div>
+    
+</body>
+</html>

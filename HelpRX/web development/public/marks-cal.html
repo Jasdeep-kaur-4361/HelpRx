@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>marks</title>
+    <script src="script/angular.min.js"></script>
+    <script>
+        var module=angular.module("newModule",[]);
+        module.controller("newController",function($scope){
+            $scope.amn="";
+            $scope.rmn="";
+            $scope.dmn="";
+            $scope.total;
+            $scope.per;
+            $scope.result;
+            $scope.number;
+
+
+            $scope.dototal=function()
+            {
+                // alert();
+                $scope.total=parseFloat($scope.amn)+parseFloat($scope.rmn)+parseFloat($scope.dmn);
+            }
+            $scope.doper=function()
+            {
+                // alert();
+                $scope.per=$scope.total*100/300+" %";
+                $scope.number=parseFloat($scope.per);
+
+            }
+            $scope.doResult=function()
+            {
+                // alert();
+                if ($scope.number>=33)
+                {
+                    // alert("hyy");
+                    $scope.result="pass";
+                }
+                else
+                {        
+                    // alert("kkkkk");            
+                    $scope.result="fail";
+                }
+            }
+        })
+    </script>
+</head>
+<body ng-app="newModule" ng-controller="newController">
+    <center>
+        <h1>Marks Card</h1>
+        <p>CPP= <input type="text" ng-model="amn" autofocus></p>
+        <p>Java= <input type="text" ng-model="rmn"></p>
+        <p>Python= <input type="text" ng-model="dmn"></p><br>
+
+        <!-- ------total----------- -->
+        <p><input type="button" value="total" ng-click="dototal();"></p>
+            <p>total={{total}}</p>
+
+        <!--percentage---------  -->
+            <p><input type="button" value="percentage" ng-click="doper();"></p>
+            <p>percentage={{per}}</p>
+
+        <!------result----------  -->
+        <p><input type="button" value="result" ng-click="doResult();"></p>
+        <p>result={{result}}</p>
+
+</center>
+</body>
+</html>

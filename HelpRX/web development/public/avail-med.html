@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/avail-med.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#availBtn").click(function () {
+                var emailKu = $("#txtEmail").val();
+                var mdnameKu = $("#txtMed").val();
+                var expdateKu = $("#txtExp").val();
+                var packingkU = $("#txtPacking").val();
+                var qtyku = $("#txtQty").val();
+                var objnew = {
+                    type: "get",
+                    url: "/avail-med",
+                    data: {
+                        email: emailKu,
+                        mdname: mdnameKu,
+                        expdate: expdateKu,
+                        packing: packingkU,
+                        qty: qtyku
+                    }
+                }
+                $.ajax(objnew).done(function (respku) {
+                    alert("Succssfully Submitted");
+                    $("#errKuch").html(respku);
+                }).fail(function (err) {
+                    alert("err");
+                    $("#errKuch").html(err);
+                })
+
+            })
+
+            $("#txtEmail").blur(function () {
+                // alert();
+                var emailKu = $(this).val();
+                var obj = {
+                    type: "get",
+                    url: "/chk-email",
+                    data: {
+                        kuchEmail: emailKu
+                    }
+                }
+                $.ajax(obj).done(function (respKuch) {
+                    // alert(respKuch);
+                    $("#res").html(respKuch);
+                     location.href = "thanks-donor.html";
+
+                }).fail(function (errKuch) {
+                    // alert(errKuch);
+                    $("#res").html(errKuch);
+                })
+            });
+
+            function setActiveUser() {
+                var au = localStorage.getItem("activeKuch");
+                // alert(au);
+                $("#txtEmail").val(au).prop("readonly", true);
+            }
+            setActiveUser();
+
+
+        })
+    </script>
+</head>
+
+<body>
+
+    <!-- ------------------NAVBAR------------------------------- -->
+    <form method="get">
+        <nav class="navbar navbar-expand-lg ">
+            <div class="container-fluid ">
+                <img class="selfhelp" src="photos/helping-3.jpg" alt="">
+                <p class="helprx">helpRX</p>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <button type="button" id="signupbtn" class="btn btn-primary offset-md-9" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
+
+                    <!-- open vala ^ -->
+                    Signup </button>
+
+                <button type="button" id="loginbtn" class="btn btn-primary" data-bs-toggle="modal"
+                    style="margin-left: 10px;" data-bs-target="#exampleModal2">
+                    Login </button>
+
+
+
+            </div>
+            </div>
+        </nav>
+    </form>
+    <p>
+        Please donate medicines which have longer than 60 days of shelf life.
+    </p>
+    <!-- -----------------AVAIL MED FORM------------------------- -->
+    <div class="container">
+
+        <div class="mb-3">
+            <label for="txtEmail-label" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="txtEmail" name="txtEmail" placeholder="Enter your email"
+                autofocus required>
+            <!-- <span class="errEmail" id="errEmail" name="errEmail"></span> -->
+        </div>
+        <div class="row">
+
+            <div class="col mb-3">
+                <label for="txtMed" class="form-label">Medicine Name</label>
+                <input type="text" class="form-control" id="txtMed" class="txtMed">
+            </div>
+            <div class="col mb-3">
+                <label for="txtExp" class="form-label">Expiry Date</label>
+                <input type="date" class="form-control" id="txtExp" name="txtExp">
+            </div>
+
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <label for="txtPacking" class="form-label">Packing</label>
+                <select class="form-select" aria-label="Default select example" id="txtPacking" name="txtPacking">
+                    <option selected>select</option>
+                    <option value="Bottle">Bottle</option>
+                    <option value="Ampoule">Ampoule</option>
+                    <option value="Blister pack">Blister pack</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="txtQty" class="form-label">Quantity</label>
+                <input type="text" class="form-control" id="txtQty" name="txtQty">
+
+            </div>
+        </div>
+
+        <center><button type="button" class="btn btn-primary" name="availBtn" id="availBtn">Avail. Medicine</button>
+        </center>
+        <div class="col-md-12 offset-md-5">
+            <span id="errKuch" class="errKuch">* </span>
+        </div>
+    </div>
+
+
+
+
+
+    </form>
+</body>
+
+</html>
