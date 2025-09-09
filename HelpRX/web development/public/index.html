@@ -5,16 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Index</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style/index.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -23,7 +17,7 @@
 
             //============SIGN-UP=============
             $("#txtEmail").blur(function () {
-                // alert();
+                alert("content in email section altered ! ! !");
                 var emailKu = $("#txtEmail").val();
                 var obj = {
                     type: "get",
@@ -35,7 +29,7 @@
                     }
                 }
                 $.ajax(obj).done(function (respKuch) {
-                    // alert(respKuch);
+                    alert(respKuch);
                     $("#errEmail").html(respKuch);
                 }).fail(function (errKuch) {
                     $("#errEmail").html(errKuch);
@@ -51,15 +45,15 @@
                 if (r.test(email) == true) {
                     $("#err1Email").html("Valid email ID");
                     $("#err1Email").addClass("sokhay").removeClass("okhay");
-                    $("#signbtn").prop('disabled', true);
+                    $("#signupbtn").prop('disabled', true);
                 }
                 else if (email == null) {
                     $("#err1Email").html("Enter your email").addClass("okhay").removeClass("sokhay");
-                    $("#signbtn").prop('disabled', true);
+                    $("#signupbtn").prop('disabled', true);
                 }
                 else {
                     $("#err1Email").html("Incorrect email syntax").addClass("okhay").removeClass("sokhay");
-                    $("#signbtn").prop('disabled', true);
+                    $("#signupbtn").prop('disabled', true);
                 }
 
 
@@ -72,19 +66,19 @@
                 var pwd = $("#txtPwd").val();
                 if (r.test(pwd) == true) {
                     $("#errPwd").html("ok").addClass("sokhay").removeClass("okhay");
-                    $("#signbtn").prop('disabled', true);
+                    $("#signupbtn").prop('disabled', true);
 
                 }
                 else
                     $("#errPwd").html("Use uppercase and lowercase alphabets,special symbols,numbers").addClass("okhay").removeClass("sokhay");
-                $("#signbtn").prop('disabled', true);
+                $("#signupbtn").prop('disabled', true);
             });
             $("#ioption").blur(function () {
                 if ($(this).val() != null) {
-                    $("#signbtn").prop('disabled', false);
+                    $("#signupbtn").prop('disabled', false);
                 }
                 else {
-                    $("#signbtn").prop('disabled', true);
+                    $("#signupbtn").prop('disabled', true);
                 }
             })
 
@@ -112,8 +106,8 @@
             });
 
             //=========================
-            $("#signbtn").click(function () {
-                alert();
+            $("#signupbtn").click(function () {
+                // alert();
                 var email = $("#txtEmail").val();
                 var pwdKu = $("#txtPwd").val();
                 var option = $("#ioption").val();
@@ -132,11 +126,11 @@
 
                 $.ajax(obj).done(function (resp) {
 
-                    // console.log(resp);
+                    console.log(resp);
 
-                    alert(resp);
+                    alert(JSON.stringify(resp));
                     $("#doneSignup").html(resp);
-                    $("#signbtn").prop('disabled', true);
+                    $("#signupbtn").prop('disabled', true);
 
 
                 }).fail(function (err) {
@@ -213,318 +207,268 @@
 
         });
     </script>
+
 </head>
 
 <body>
     <form method="get">
-        <nav class="navbar navbar-expand-lg " id="navbar">
-            <div class="container-fluid ">
-                <img class="selfhelp" src="pics-3/helprx-logo.png" alt="logo">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg professional-navbar shadow-sm">
+            <div class="container-fluid">
                 <div class="logo">
-                    <div></div>
-                    <h1 class="helprx">Help<span>RX</span></h1>
+                    <h1 class="helprx mb-0">Help<span>RX</span></h1>
                 </div>
-
-                
-
-
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <button type="button" id="signupbtn" class="btn btn-primary offset-md-9" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">
-
-                    <!-- open vala ^ -->
-                    Signup </button>
-
-                <button type="button" id="signupbtn" class="btn btn-primary" data-bs-toggle="modal"
-                    style="margin-left: 10px;" data-bs-target="#exampleModal2">
-                    Login </button>
-
-
-
-
-
-
-                <!-- <button type="button" onclick="dashboard();" style="margin-left: 10px;" id="dashbtn" formaction="/dash-admin" class="btn btn-primary">
-                            Dashboard </button> -->
-
-            </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="about.html"><i
+                                    class="fa-solid fa-circle-info me-1"></i>About</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="how.html"><i
+                                    class="fa-solid fa-gears me-1"></i>How it Works</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="faq.html"><i
+                                    class="fa-solid fa-question-circle me-1"></i>FAQ</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="contact.html"><i
+                                    class="fa-solid fa-envelope me-1"></i>Contact</a></li>
+                        <li class="nav-item ms-2">
+                            <button type="button" id="signbtn" class="btn btn-professional btn-sm"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="fa-solid fa-user-plus me-1"></i>Sign up
+                            </button>
+                        </li>
+                        <li class="nav-item ms-2">
+                            <button type="button" id="loginbtn" class="btn btn-outline-professional btn-sm"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                <i class="fa-solid fa-sign-in-alt me-1"></i>Login
+                            </button>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </form>
-    <div class="belownav">
-        <ul class="nav-links">
-                    <a href="index.html" class="anchorsNav">Home</a>
-                    <a href="index.html" class="anchorsNav">About</a>
-                    <a href="index.html" class="anchorsNav">How it Works</a>
-                    <a href="index.html" class="anchorsNav">FAQ</a>
-                    <a href="index.html" class="anchorsNav">Contact</a>
-                </ul>
-    </div>
-    <!-- ----------------crousel------------- -->
-    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="1000">
-                <img width="800" height="500" src="photos/rm373batch15-217-01.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item" data-bs-interval="2000">
-                <img width="800" height="500" src="photos/blue-med.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img width="800" height="500" src="photos/7777777.jpg" class="d-block w-100" alt="...">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-        <div class="row">
-            <center>
-                <div class="our">Our Services</div>
-            </center>
-        </div>
-    </div>
-    <!-- ******************* -->
-    <div class="container">
 
-        <div class="row mt-1">
+    <!-- Hero Section -->
+    <section class="hero-section container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <h1 class="display-5 fw-bold text-professional mb-3">
+                    <i class="fa-solid fa-heart-pulse me-2"></i>Welcome to HelpRX
+                </h1>
+                <p class="lead text-secondary mb-4">
+                    Canada's trusted platform for finding and donating medicines, connecting those who care with those
+                    in need.
+                </p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap mb-4 main-actions">
+                    <a href="find-med.html" class="btn btn-professional btn-lg">
+                        <i class="fa-solid fa-pills me-2"></i>Find Medicine
+                    </a>
+                    <a href="avail-med.html" class="btn btn-outline-professional btn-lg">
+                        <i class="fa-solid fa-hand-holding-medical me-2"></i>Donate Medicine
+                    </a>
+                </div>
+                <form class="quick-search-form mx-auto mb-4" style="max-width: 400px;">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search medicine..."
+                            aria-label="Search medicine">
+                        <button class="btn btn-professional" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section (No Images) -->
+    <div class="container py-4">
+        <div class="row text-center mb-4">
             <div class="col">
-                <div class="card" style="height: 370px;">
-
-                    <img height="166" class="pic" src="photos/non-profit.jpg" class="card-img-top" alt="...">
+                <h2 class="our">Our Services</h2>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="card service-card h-100 shadow-sm">
                     <div class="card-body">
+                        <div class="mb-2"><i class="fa-solid fa-hand-holding-heart fa-2x text-professional"></i></div>
+                        <h5 class="card-title text-professional">Non-Profit</h5>
                         <p class="card-text" id="para">
-                            It is non-profit organisation made to help others 24X7.
-                        </p>
-                        <p id="para">
-                            Our motive is to help people who can't afford medicines.
+                            We are a non-profit organisation, helping others 24x7. Our motive is to help people who
+                            can't afford medicines.
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card" style="height: 370px;">
-                    <img src="photos/nedd-help.jpg" class="card-img-top" alt="...">
-                    <div class="card-body" id="para">
-                        <p class="card-text">
-                            This plaform is made to help people with their medicine needs.</p>
-                        <p> People can look for medicine in their nerby areas.
+            <div class="col-md-3">
+                <div class="card service-card h-100 shadow-sm">
+                    <div class="card-body">
+                        <div class="mb-2"><i class="fa-solid fa-magnifying-glass fa-2x text-professional"></i></div>
+                        <h5 class="card-title text-professional">Medicine Finder</h5>
+                        <p class="card-text" id="para">
+                            Find medicines in your nearby areas. The platform is made to help people with their medicine
+                            needs.
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card" style="height: 370px;">
-                    <img src="photos/terms- and-condtions.jpg" class="card-img-top" alt="...">
-                    <div class="card-body" id="para">
-                        <p class="card-text">
-
-                            Needy must use those medicines after doctor prescription.
-                            <br>
-
-                            The medicines would be recieved and donated by Needy and Donors helpRx is not
-                            responsible for anything.
+            <div class="col-md-3">
+                <div class="card service-card h-100 shadow-sm">
+                    <div class="card-body">
+                        <div class="mb-2"><i class="fa-solid fa-shield-halved fa-2x text-professional"></i></div>
+                        <h5 class="card-title text-professional">Safety First</h5>
+                        <p class="card-text" id="para">
+                            Needy must use medicines after doctor prescription. HelpRX is not responsible for misuse.
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card" style="height: 370px;">
-                    <img src="photos/blue-hand.jpg" class="card-img-top" alt="...">
-                    <div class="card-body" id="para">
-                        <p class="card-text">Donate unusable medicines to people who need them.<br><br>Your small
-                            efforts can improve someone's life and even save their life.</p>
+            <div class="col-md-3">
+                <div class="card service-card h-100 shadow-sm">
+                    <div class="card-body">
+                        <div class="mb-2"><i class="fa-solid fa-hand-holding-medical fa-2x text-professional"></i></div>
+                        <h5 class="card-title text-professional">Donate Medicines</h5>
+                        <p class="card-text" id="para">
+                            Donate unused medicines to people who need them. Your small effort can save a life.
+                        </p>
                     </div>
+                </div>
+            </div>
+        </div>
+        <!-- Info Cards Row -->
+        <div class="row justify-content-center mt-5 mb-4">
+            <div class="col-md-4 mb-3">
+                <div class="info-card shadow-sm p-3 h-100">
+                    <i class="fa-solid fa-shield-virus fa-2x text-professional mb-2"></i>
+                    <h5 class="fw-bold text-professional">Verified Donors</h5>
+                    <p class="text-muted small">All donors are verified for safety and reliability.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="info-card shadow-sm p-3 h-100">
+                    <i class="fa-solid fa-clock fa-2x text-professional mb-2"></i>
+                    <h5 class="fw-bold text-professional">Fast Response</h5>
+                    <p class="text-muted small">Get quick help and medicine availability updates.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="info-card shadow-sm p-3 h-100">
+                    <i class="fa-solid fa-user-lock fa-2x text-professional mb-2"></i>
+                    <h5 class="fw-bold text-professional">Privacy First</h5>
+                    <p class="text-muted small">Your data is secure and never shared without consent.</p>
                 </div>
             </div>
         </div>
     </div>
-    <center>
-        <p>
-        <div class="devloped-by"> Developed By</div>
-        </p>
-    </center>
+
+    <!-- Developed By & Contact Section -->
     <div class="container">
         <div class="row">
-            <div class="developer">
-
-            </div>
+            <div class="developer"></div>
         </div>
-        <!-- ====================== -->
         <table class="table">
-
             <tbody>
                 <tr id="fontdev">
-                    <td scope="row" align="right">
-                        <img width="150px" class="pics" src="photos/WhatsApp Image 2023-07-21 at 5.04.54 AM.jpeg">
+                    <td align="left">
+                        <span class="fw-bold">Developed By:</span><br>
+                        <span>Name:</span> Jasdeep Kaur<br>
+                        <span>Email:</span> reet.gill9779@gmail.com<br>
+                        <span>Address:</span> Surrey<br>
+                        <span>Contact No.:</span> +1 (778) 962 4300
                     </td>
                     <td align="left">
-                        <font size="5">Developed By:-</font>
-                        <br>
-                        <font size="4" color="#66d9ff">Name: </font>Jasdeep Kaur
-                        <br>
-                        <font size="4" color="#66d9ff">Email: </font>reet.gill9779@gmail.com
-                        <br>
-                        <font size="4" color="#66d9ff">Address: </font>Bathinda
-                        <br>
-                        <font size="4" color="#66d9ff">Contact No.: </font>123654789
-                    </td>
-                    <td scope="row" align="right">
-                        <img class="pics" width="150px" src="photos/sir.jpg">
-                    </td>
-                    <td align="left">
-                        <font size="5">Under the guidance of:-</font>
-                        <br>
-                        <font size="4" color="#66d9ff">Author of REAL JAVA: </font>Rajesh Bansal
-
-                        <br>
-                        <font size="4" color="#66d9ff">Address: </font>Bangalore Computer
-                        Education<br>&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        Ajit Road,Bathinda
-                        <br>
-                        <font size="4" color="#66d9ff">Contact No.: </font>123654789
+                        <span class="fw-bold">Under the guidance of:</span><br>
+                        <span>Author of REAL JAVA:</span> Rajesh Bansal<br>
+                        <span>Address:</span> Bangalore Computer Education, Ajit Road, Bathinda<br>
+                        <!-- <span>Contact No.:</span> 123654789 -->
                     </td>
                 </tr>
-
             </tbody>
         </table>
-
     </div>
     <center>
-        <p>
         <div class="reach-us"><u>Reach Us</u></div>
-        </p>
-
-
-        <!-- <iframe src="" width="600" height="400" frameborder="0"></iframe> -->
         <iframe
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d20964.895848299464!2d74.94750691833873!3d30.21008994032911!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391732a4f07278a9%3A0x4a0d6293513f98ce!2sBanglore%20Computer%20Education!5e0!3m2!1sen!2sin!4v1689933571072!5m2!1sen!2sin"
             width="600" height="450" style="border: 0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
-</body>
+    </center>
 
-</html>
-
-</center>
-
-
-
-<!-- Modal-sign-form -->
-
-<!-- ------------------------HEADING------------------ -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" id="abc1">
-        <div class="modal-content">
-            <div class="modal-header">
-                <p class="modal-title" id="headsign">Signup form</p>
-                <!-- ----------------CLOSE----------------- -->
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <div class="mb-3">
-                    <!-- ----------EMAIL------------------------------------ -->
-                    <label for="txtEmail" id="labelsignEmail" class="form-label">Email</label>
-                    <span id="errEmail"> </span>
-                    <input type="email" class="form-control" id="txtEmail" placeholder="Enter your Email" autofocus>
-                    <div id="err1Email"> </div>
+    <!--=================== Signup Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" id="abc1">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-title" id="headsign">Signup form</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <!-- -------------------PASSWORD---------------------------- -->
-                <div class="mb-3">
-                    <label for="txtPwd" class="form-label" id="labelsignPwd">Password</label>
-                    <input type="text" class="form-control" required id="txtPwd" placeholder="Enter Password">
-                    <span id="errPwd"> </span>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="txtEmail" id="labelsignEmail" class="form-label">Email gg</label>
+                        <span id="errEmail"> </span>
+                        <input type="email" class="form-control" id="txtEmail" placeholder="Enter your Email" autofocus>
+                        <div id="err1Email"> </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtPwd" class="form-label" id="labelsignPwd">Password</label>
+                        <input type="text" class="form-control" required id="txtPwd" placeholder="Enter Password">
+                        <span id="errPwd"> </span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ioption" id="labelsignType" class="form-label">Type</label>
+                        <select class="form-select" id="ioption" required>
+                            <option>Open this select menu</option>
+                            <option value="Needy">Needy</option>
+                            <option value="Donar">Donar</option>
+                        </select>
+                    </div>
                 </div>
-                <!-- --------------TYPE-------------------------------------- -->
-                <div class="mb-3">
-                    <label for="ioption" id="labelsignType" class="form-label">Type</label>
-                    <select class="form-select" id="ioption" required>
-                        <option>Open this select menu</option>
-                        <option value="Needy">Needy</option>
-                        <option value="Donar">Donar</option>
-                        <!-- <option value="Admin">Admin</option> -->
-                    </select>
+                <div class="mb-4">
+                    <center><span class="mb-5" id="doneSignup">res </span></center>
+                    <center><button type="button" class="btn btn-primary" id="signupbtn" disabled>Signup</button>
+                    </center>
                 </div>
-            </div>
-
-
-
-
-            <div class="mb-4">
-                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                <center><span class="mb-5" id="doneSignup">res </span></center>
-                <center><button type="button" class="btn btn-primary" id="signupbtn" disabled>Signup</button></center>
             </div>
         </div>
     </div>
-</div>
-<!--------------------------- Modal-Login-form ---------------------------------->
-
-<!-- ------------------------HEADING------------------ -->
-<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" id="abc2">
-        <div class="modal-content">
-            <div class="modal-header">
-                <p class="modal-title" id="headlog">Login Form</p>
-                <!-- ----------------CLOSE----------------- -->
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <div class="mb-3">
-                    <!-- ----------EMAIL------------------------------------ -->
-                    <label for="txtlogEmail" id="labelEmail" class="form-label">Email ID</label>
-
-                    <input type="text" class="form-control" autofocus required id="txtlogEmail" value=""
-                        placeholder="Enter your Email">
-                    <span id="errlogEmail"> </span>
+    <!--=================== Login Modal ===================-->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" id="abc2">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-title" id="headlog">Login Form</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <!-- -------------------PASSWORD---------------------------- -->
-                <div class="mb-3">
-                    <label for="txtlogPwd" id="labelPwd" class="form-label">Password</label>
-                    <span id="errlogPwd"> </span>
-                    <div class="row">
-                        <div class="col-md-11 ">
-                            <input type="password" class="form-control" id="txtlogPwd"
-                                placeholder="Enter your Password">
-                        </div>
-                        <div class="col-md-1 mt-2">
-                            <i class="fa-solid fa-eye-slash"></i>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="txtlogEmail" id="labelEmail" class="form-label">Email ID</label>
+                        <input type="text" class="form-control" autofocus required id="txtlogEmail" value=""
+                            placeholder="Enter your Email">
+                        <span id="errlogEmail"> </span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtlogPwd" id="labelPwd" class="form-label">Password</label>
+                        <span id="errlogPwd"> </span>
+                        <div class="row">
+                            <div class="col-md-11 ">
+                                <input type="password" class="form-control" id="txtlogPwd"
+                                    placeholder="Enter your Password">
+                            </div>
+                            <div class="col-md-1 mt-2">
+                                <i class="fa-solid fa-eye-slash"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-            </div>
-
-
-
-
-            <div class="modal-footer ">
-                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                <span id="errlogbtn"> </span>
-                <center><button type="button" class="btn btn-primary" id="signupbtn">Login</button></center>
+                <div class="modal-footer ">
+                    <span id="errlogbtn"> </span>
+                    <center><button type="button" class="btn btn-primary" id="loginbtn">Login</button></center>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<br><br><br><br><br><br><br><br>
-<!-- <center><a href="/dash-admin">dash-admin</a></center> -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</form>
 
 </html>

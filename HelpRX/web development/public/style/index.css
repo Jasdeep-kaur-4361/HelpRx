@@ -86,12 +86,14 @@ body {
 }
 
 .our {
-    color: #000033;
-    font-size: 35px;
+    color: #145214;
+    font-size: 2.2rem;
     font-family: 'Rubik', sans-serif;
-    /* margin-top: 20px; */
-    background-color: #ccf2ff;
-    align-items: center;
+    background-color: #f0fff4;
+    padding: 0.5rem 0;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
 }
 
 .developer {
@@ -100,7 +102,7 @@ body {
 }
 
 .devloped-by {
-    color: #000033;
+    color: #144734;
     font-size: 35px;
     font-family: Britannic;
     /* margin-top: 20px; */
@@ -109,7 +111,7 @@ body {
 }
 
 .reach-us {
-    color: #000033;
+    color: #144734;
     font-size: 45px;
     font-family: Britannic;
     /* margin-top: 20px; */
@@ -124,7 +126,7 @@ body {
 
 .card:hover {
 
-    box-shadow: 0 10px 16px 0 rgba(105, 186, 233, 0.644);
+    box-shadow: 0 10px 16px 0 rgba(105, 233, 135, 0.644);
 }
 
 #doneSignup {
@@ -140,7 +142,15 @@ body {
     border-radius: 10px;
 
 }
+#loginbtn {
+    background-color: #43a047;
+    border: #43a047;
+    color: #fff;
+    Padding: 8px 18px;
+    Font-Weight: 600;
+    border-radius: 10px;
 
+}
 #signupbtn:hover {
     /* box-shadow: 0px 10px 8px 0px rgba(157, 160, 161, 0.644); */
     background-color: #218c59;
@@ -182,6 +192,9 @@ body {
     border: #43a047;
     align-items: center;
 } */
+
+
+
 .nav-links {
     list-style: none;
     display: flex;
@@ -220,13 +233,14 @@ body {
 
 #headsign {
     font-size: 30px;
-    color: #000080;
-    font-family: Elephant;
+    font-weight: bold;
+    color: #165218;
+    /* font-family: ; */
 }
 
 #labelsignEmail {
     font-size: 20px;
-    font-family: Georgia;
+    /* font-family: Georgia; */
 }
 
 #labelsignPwd {
@@ -263,4 +277,65 @@ body {
 
 #fontdev {
     font-family: Rockwell;
+}
+
+.btn-professional {
+    background-color: #145214 !important;
+    color: #fff !important;
+    border: none;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(33, 50, 33, 0.08);
+}
+.btn-professional:hover, .btn-outline-professional:focus {
+    background-color: #198754 !important;
+    color: #fff !important;
+}
+.btn-outline-professional {
+    border: 2px solid #145214 !important;
+    color: #145214 !important;
+    background: transparent !important;
+    font-weight: 600;
+}
+.btn-outline-professional:hover {
+    background-color: #145214 !important;
+    color: #fff !important;
+}
+.text-professional {
+    color: #145214 !important;
+}
+.hero-section {
+    background: linear-gradient(135deg, #f7f7f7 0%, #e9fbe5 100%);
+    border-radius: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(33, 50, 33, 0.08);
+}
+.service-card {
+    border-radius: 1rem;
+    transition: box-shadow 0.2s;
+    background: #fff;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.service-card:hover {
+    box-shadow: 0 8px 24px rgba(33, 50, 33, 0.18);
+    background: #f0fff4;
+}
+.info-card {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(33, 50, 33, 0.08);
+    transition: box-shadow 0.2s;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.info-card:hover {
+    box-shadow: 0 8px 24px rgba(33, 50, 33, 0.18);
+    background: #f0fff4;
 }

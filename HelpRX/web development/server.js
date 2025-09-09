@@ -78,14 +78,17 @@ app.get("/db-signup", function (req, resp) {
   resp.sendFile(process.cwd() + "/public/DB-signup.html");
 })
 
+// *** DONE ***
 app.post("/chk-signup", function (req, resp) {
-
+  // in use ---- DONE ***
+ console.log("Signup modal btn clicked !!!");
   var email = req.body.kuchEmail;
   var pwd = req.body.kuchPwd;
   var option = req.body.kuchOp;
+  console.log("Signup modal btn clicked !!!");
   console.log(option);
 
-  dbCon.query("insert into users (email,pwd,utype,dos,status) VALUES (?,?,?,CURRENT_TIMESTAMP,1)", [email, pwd, option], function (err, resultTable) {
+  dbCon.query("insert into users2023 (email,pwd,utype,dos,status) VALUES (?,?,?,CURRENT_TIMESTAMP,1)", [email, pwd, option], function (err, resultTable) {
     if (err == null) {
       console.log("Insert Success:", resultTable);
       resp.send("Record Saved...");
@@ -99,6 +102,7 @@ app.post("/chk-signup", function (req, resp) {
 
 
 })
+
 
 app.post("/signup-process-secure", function (req, resp) {
   resp.send("Data Reached");
@@ -343,10 +347,11 @@ app.post("/db-delete-process-secure", function (req, resp) {
 //--------------------------------
 app.get("/chk-email", function (req, resp) {
   //saving data in table
-
+  console.log("/chk-email command is being executed");
 
   //fixed                             //same seq. as in table
   dbCon.query("select * from users2023 where email=?", [req.query.kuchEmail], function (err, resultTable) {
+    console.log("resultTable = ", resultTable);
     if (err == null) {
       if (resultTable.length == 1)
         resp.send("Already Taken...");
