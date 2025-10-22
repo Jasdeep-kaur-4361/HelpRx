@@ -4,9 +4,16 @@ var mysql = require("mysql");
 
 var app = express();
 
-app.listen(2004, function () {
-  console.log("Server Started...");
-})
+// changing for deployment on Railway
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, function () {
+  console.log("✅ Server running on port:", PORT);
+});
+
+
+// app.listen(2004, function () {
+//   console.log("Server Started...");
+// })
 
 
 app.use(express.urlencoded({ extended: true })); // ✅ correct syntax
